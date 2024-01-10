@@ -99,7 +99,7 @@ def main():
         if not username or not password:
             st.warning("Please enter DataForSEO credentials.")
         elif not keywords:
-            st.warning("Please enter at least one keyword.")
+            st.warning("Please upload an Excel file with a keyword column.")
         else:
             st.success("Fetching data...")
             data = get_pixel_ranks(keywords, language, country, device, username, password)
