@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import requests
 import json
-from streamlit_tags import st_tags
 
 # Streamlit App Configuration
 def setup_streamlit():
