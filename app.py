@@ -6,8 +6,10 @@ import json
 # Streamlit App Configuration
 def setup_streamlit():
     st.set_page_config(page_title="PixelRank with DataForSEO", page_icon="🏅", layout="wide")
+    st.image("https://www.claneo.com/wp-content/uploads/Element-4.svg", width=600, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     st.title("🏅 PixelRank with DataForSEO")
     st.markdown("## Analyze the SERP pixel ranks for a set of keywords")
+    st.divider()
 
 # creating the Restclient
 class RestClient:
