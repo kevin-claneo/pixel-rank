@@ -5,8 +5,8 @@ import json
 
 # Streamlit App Configuration
 def setup_streamlit():
-    st.set_page_config(page_title="PixelRank with DataForSEO", page_icon=":framed_picture:", layout="wide")
-    st.title(":framed_picture: :medal_sports: PixelRank with DataForSEO")
+    st.set_page_config(page_title="PixelRank with DataForSEO", page_icon="🏅", layout="wide")
+    st.title("🏅 PixelRank with DataForSEO")
     st.markdown("## Analyze the SERP pixel ranks for a set of keywords")
 
 # creating the Restclient
