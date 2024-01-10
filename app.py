@@ -91,6 +91,7 @@ def main():
         language = st.selectbox("Language", options=language_options, index=28)
         country = st.selectbox("Country", options=country_options, index=69)
         device = st.selectbox("Device", options=["desktop", "mobile"], index=1)
+        uploaded_file = st.file_uploader("Upload Excel Sheet", type=['xlsx'])
 
     if st.button("Fetch SERP Data"):
         if not username or not password:
