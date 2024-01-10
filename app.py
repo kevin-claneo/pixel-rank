@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import json
+import re
 
 # Streamlit App Configuration
 def setup_streamlit():
@@ -58,6 +59,21 @@ def keywords_from_excel():
     df.rename(columns=column_name_mapping, inplace=True)
     return df['keyword'].tolist()
 
+def extract_domain(url):
+    match = re.search(r"https?://(?:www\.|m\.|[^/]+\.)*?([^/\.]+\.[^/]+)(?:/.*|$)", url)
+    domain = match.group(1) if match else url
+    return domain
+
+def calculate_pixelrank(df, domain):
+    pixelrank = 0
+    for _, row in df.iterrows():
+        for item in row['items']:
+            if 'domain' in item and domain in item['domain']:
+                return pixelrank
+            if 'rectangle' in item and item['rectangle']:
+                pixelrank += item['rectangle']['height']
+    return pixelrank
+
 # Main Function
 def main():
     setup_streamlit()
@@ -68,7 +84,7 @@ def main():
         language = st.selectbox("Language", options=language_options, index=language_options.index("German"))
         country = st.selectbox("Country", options=country_options, index=country_options.index("Germany"))
         device = st.selectbox("Device", options=["desktop", "mobile"], index=1)
-        domain = st.text_input("Domain")
+        domain = extract_domain(st.text_input("Domain"))
         uploaded_file = st.file_uploader("Upload Excel Sheet", type=['xlsx'])
 
     if st.button("Fetch SERP Data"):
